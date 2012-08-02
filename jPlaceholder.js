@@ -3,46 +3,69 @@
 		var opts = $.extend({}, $.fn.placeholder.defaults, options);
 		return this.each(function() {
 			var $field = $(this);
+      var $label;
       var placeholder_text = $field.data('placeholder');
-      var placeholder_id = Math.floor(Math.random() * ((9 * Math.pow(10, 15)) - Math.pow(10, 15) + 1))
-      $field.before('<span id="' + placeholder_id + '">' + placeholder_text + '</span>');
-			var $label = $('#' + placeholder_id)
+      if (placeholder_text) {
+		    $label = $('<span class="placeholder">' + placeholder_text + '</span>');
+        $field.before($label);
+      } else {
+        $label = $field.prev('label');
+      }
+      if (!$label.length) { return; }
+      if (!opts.slide) { opts.vanishing_length = 0; }
+      $field.parent().css({ position: 'relative' })
+      $label.css({position: 'absolute'});  // Remove it from the flow
+
 			var field_pos = $field.position();
 			var label_pos = $field.position();
 			var field_width_offset = $field.outerWidth() - $field.innerWidth();
 			var field_height_offset = $field.outerHeight() - $field.innerHeight();
 			var starting_position = label_pos.left + field_width_offset + opts.padding_start;
+			var ending_position = starting_position + $field.innerWidth() - $label.outerWidth() - opts.padding_end;
+      console.log(field_pos, field_width_offset, field_height_offset, starting_position);
       var current_length = 0;
       var read_value = $field.val;
       var tagname = $field.get(0).tagName.toLowerCase();
       if (tagname == 'div') { read_value = $field.text; }
-      $field.parent().css({ position: 'relative' })
+
+			$label.css({
+				top: label_pos.top + field_height_offset,
+				left: starting_position,
+				'z-index': 0,
+			});
+
 			$field.css({
-				position: 'absolute',
-				top: label_pos.top,
-				left: label_pos.left,
         'background-color': 'transparent',
 				'z-index': 1
-			}).keyup(function() {
+			}).addClass('placheld').focus(function() {
+        if (opts.slide) {
+          $label.stop().animate({
+            left: ending_position,
+          }, opts.focus_speed);
+		  	}
+      }).blur(function() {
+        if (!current_length && opts.slide) {
+          $label.stop().animate({
+            left: starting_position,
+          }, opts.blur_speed);
+        }
+      }).keyup(function() {
         current_length = read_value.call($field).length
-        if (current_length > 0) {
+        if (current_length > opts.vanishing_length) {
           $label.hide();
         } else {
           $label.show();
         }
       });
-			$label.css({
-				position: 'absolute',
-				top: label_pos.top + field_height_offset,
-				left: starting_position,
-				'z-index': 0,
-				opacity: opts.opacity
-			});
 		});
 	};
 
 	$.fn.placeholder.defaults = {
-		opacity: 0.4,
-		padding_start: 8
+		focus_speed: 600,
+		blur_speed: 600,
+		padding_start: 1,
+		padding_end: 3,
+    vanishing_length: 5,
+    slide: true
 	}
 })(jQuery);

@@ -6,6 +6,22 @@
 	   <script src="jPlaceholder.js" type="text/javascript" charset="utf-8"></script>
 	</head>
   <div>
+  <div id='editable-slide' data-placeholder='placeholder' contenteditable=true style="border: 1px solid black; width: 20em;"></div>
+  </div>
+  <br/>
+  <div>
+  <label>Placeholder</label>
+  <div id='editable-label' contenteditable=true style="border: 1px solid black; width: 20em;"></div>
+  </div>
+	<p>
+    <label for="field">Placeholder</label>
+    <textarea name="field" value="" id="field"></textarea>
+	</p>
+	<p>
+    <label for="field">Placeholder</label>
+		<input type="text" name="field" value="" id="field"/>
+	</p>
+  <div>
   <div id='editable' data-placeholder='placeholder' contenteditable=true style="border: 1px solid black; width: 20em;"></div>
   </div>
 	<p>
@@ -31,6 +47,8 @@
 		$('input').placeholder();
     $('textarea').placeholder();
     $('#editable').placeholder();
+    $('#editable-label').placeholder();
+    $('#editable-slide').placeholder({slide: false});
 	//]]>
 	</script>
 </html>
