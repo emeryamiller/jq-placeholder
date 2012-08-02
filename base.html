@@ -1,0 +1,36 @@
+<html>
+	<head>
+	  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+	  <title>Placeholder Sample</title>
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	   <script src="jPlaceholder.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+  <div>
+  <div id='editable' data-placeholder='placeholder' contenteditable=true style="border: 1px solid black; width: 20em;"></div>
+  </div>
+	<p>
+    <textarea data-placeholder='placeholder' name="field" value="" id="field"></textarea>
+	</p>
+	<p>
+		<input data-placeholder='placeholder' type="text" name="field" value="" id="field"/>
+	</p>
+	<p>
+		<input data-placeholder='placeholder' type="text" style="position: relative; top: 100;" name="field" value="" id="field"/>
+	</p>
+	<p>
+		<input data-placeholder='placeholder' type="text" style="position: absolute; left: 250" name="field" value="" id="field"/>
+	</p>
+	<p>
+		<input data-placeholder='placeholder' type="text" style="position: fixed; left: 450" name="field" value="" id="field"/>
+	</p>
+	<p style="position:relative; top:400">
+	<input data-placeholder='placeholder' type="text" name="field" value="" id="field"/>
+	</p>
+	<script type="text/javascript" language="javascript" charset="utf-8">
+	//<![CDATA[
+		$('input').placeholder();
+    $('textarea').placeholder();
+    $('#editable').placeholder();
+	//]]>
+	</script>
+</html>
