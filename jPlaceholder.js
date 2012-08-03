@@ -5,13 +5,14 @@
 			var $field = $(this);
       var $label;
       var placeholder_text = $field.data('placeholder');
-      if (placeholder_text) {
-		    $label = $('<span class="placeholder">' + placeholder_text + '</span>');
-        $field.before($label);
-      } else {
-        $label = $field.prev('label');
+      if (!placeholder_text) {
+        $prev_label = $field.prev('label')
+        placeholder_text = $prev_label.text();
+        if (placeholder_text) {$prev_label.hide();}
       }
-      if (!$label.length) { return; }
+      if (!placeholder_text) { return; }
+      $label = $('<span class="placeholder">' + placeholder_text + '</span>');
+      $field.after($label);
       if (!opts.slide) { opts.vanishing_length = 0; }
       $field.parent().css({ position: 'relative' })
       $label.css({position: 'absolute'});  // Remove it from the flow
@@ -30,13 +31,12 @@
 			$label.css({
 				top: label_pos.top + field_height_offset,
 				left: starting_position,
-				'z-index': 0,
-			});
+			}).mousedown(function(e) {
+        e.preventDefault();
+        $field.focus();
+      });
 
-			$field.css({
-        'background-color': 'transparent',
-				'z-index': 1
-			}).addClass('placheld').focus(function() {
+			$field.addClass('placheld').focus(function() {
         if (opts.slide) {
           $label.stop().animate({
             left: ending_position,
