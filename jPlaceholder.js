@@ -28,6 +28,16 @@
       var tagname = $field.get(0).tagName.toLowerCase();
       if (tagname == 'div') { read_value = $field.text; }
 
+      var keystroke_handler = function(e) {
+          current_length = read_value.call($field).length
+          if (e && e.type === 'keypress') { current_length += 1; }
+          if (current_length > opts.vanishing_length) {
+            $label.hide();
+          } else {
+            $label.show();
+          }
+      }
+
 			$label.css({
 				top: label_pos.top + field_height_offset,
 				left: starting_position,
@@ -48,16 +58,9 @@
             left: starting_position,
           }, opts.blur_speed);
         }
-      }).bind('keyup keypress', function(e) {
-        current_length = read_value.call($field).length
-        if (event && event.type === 'keypress') { current_length += 1; }
-        if (current_length > opts.vanishing_length) {
-          $label.hide();
-        } else {
-          $label.show();
-        }
-      }).keyup();
+      }).bind('keyup keypress', keystroke_handler);
 
+      keystroke_handler();
       active_ele = document.activeElement
       if (active_ele) {
         if ((active_ele) === this) { $field.focus(); }
@@ -73,4 +76,5 @@
     vanishing_length: 5,
     slide: true
 	}
+
 })(jQuery);
