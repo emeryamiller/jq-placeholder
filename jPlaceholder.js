@@ -48,8 +48,9 @@
             left: starting_position,
           }, opts.blur_speed);
         }
-      }).keyup(function() {
+      }).bind('keyup keypress', function(e) {
         current_length = read_value.call($field).length
+        if (event.type === 'keypress') { current_length += 1; }
         if (current_length > opts.vanishing_length) {
           $label.hide();
         } else {
