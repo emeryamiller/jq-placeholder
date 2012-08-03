@@ -46,7 +46,7 @@
         $field.focus();
       });
 
-			$field.addClass('placheld').focus(function() {
+			$field.addClass('placeheld').focus(function() {
         if (opts.slide) {
           $label.stop().animate({
             left: ending_position,
