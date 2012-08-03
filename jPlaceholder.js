@@ -50,13 +50,13 @@
         }
       }).bind('keyup keypress', function(e) {
         current_length = read_value.call($field).length
-        if (event.type === 'keypress') { current_length += 1; }
+        if (event && event.type === 'keypress') { current_length += 1; }
         if (current_length > opts.vanishing_length) {
           $label.hide();
         } else {
           $label.show();
         }
-      });
+      }).keyup();
 		});
 	};
 
