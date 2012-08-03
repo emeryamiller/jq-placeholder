@@ -19,10 +19,10 @@
 
 			var field_pos = $field.position();
 			var label_pos = $field.position();
-			var field_width_offset = $field.outerWidth() - $field.innerWidth();
-			var field_height_offset = $field.outerHeight() - $field.innerHeight();
+			var field_width_offset = ($field.outerWidth() - $field.width())/2;
+			var field_height_offset = ($field.outerHeight() - $field.height())/2;
 			var starting_position = label_pos.left + field_width_offset + opts.padding_start;
-			var ending_position = starting_position + $field.innerWidth() - $label.outerWidth() - opts.padding_end;
+			var ending_position = starting_position + $field.width() - $label.outerWidth() - opts.padding_end;
       var current_length = 0;
       var read_value = $field.val;
       var tagname = $field.get(0).tagName.toLowerCase();
