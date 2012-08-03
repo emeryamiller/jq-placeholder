@@ -57,6 +57,11 @@
           $label.show();
         }
       }).keyup();
+
+      active_ele = document.activeElement
+      if (active_ele) {
+        if ((active_ele) === this) { $field.focus(); }
+      }
 		});
 	};
 
