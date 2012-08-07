@@ -23,12 +23,15 @@
 
 			var field_pos = $field.position();
 			var label_pos = $field.position();
-      var field_padding_top = pixels_to_int($field.css('padding-top'))
-      var field_padding_left = pixels_to_int($field.css('padding-left'))
-      var field_padding_right = pixels_to_int($field.css('padding-right'))
+      var field_margin_top = pixels_to_int($field.css('margin-top'));
+      var field_margin_left = pixels_to_int($field.css('margin-left'));
+      var field_margin_right = pixels_to_int($field.css('margin-right'));
+      var field_padding_top = pixels_to_int($field.css('padding-top'));
+      var field_padding_left = pixels_to_int($field.css('padding-left'));
+      var field_padding_right = pixels_to_int($field.css('padding-right'));
 
-			var starting_position = label_pos.left + field_padding_left + opts.padding_left;
-			var ending_position = starting_position + $field.width() - field_padding_right - opts.padding_right;
+			var starting_position = label_pos.left + field_padding_left + opts.padding_left + field_margin_left;
+			var ending_position = starting_position + $field.width() - field_padding_right - opts.padding_right - field_margin_right;
       var current_length = 0;
       var read_value = $field.val;
       var tagname = $field.get(0).tagName.toLowerCase();
@@ -45,8 +48,8 @@
       }
 
 			$label.css({
-				top: label_pos.top + field_padding_top + opts.padding_top,
-				left: starting_position,
+				top: label_pos.top + field_padding_top + opts.padding_top + field_margin_top,
+				left: starting_position
 			}).mousedown(function(e) {
         e.preventDefault();
         $field.focus();
