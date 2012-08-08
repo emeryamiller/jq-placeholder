@@ -41,8 +41,8 @@
       var field_surround = field_padding($field);
       var label_top = field_pos.top + field_surround.top + opts.padding_top;
       var label_left = field_pos.left + field_surround.left + opts.padding_left;
-      var label_right = field_pos.left + $field.outerWidth() - field_surround.right - opts.padding_right;
-      var label_rightmost_left = label_right - $label.outerWidth();
+      var label_right = field_pos.left + $field.outerWidth(true) - field_surround.right - opts.padding_right;
+      var label_rightmost_left = label_right - $label.outerWidth(true);
 
       if (label_rightmost_left < label_left) {
         label_rightmost_left = label_left;
@@ -60,7 +60,7 @@
           current_length = read_value.call($field).length
           if (e && e.type === 'keypress') { current_length += 1; }
           if (current_length > opts.vanishing_length) {
-            $label.hide();
+            $label.fadeOut();
           } else {
             $label.show();
           }
