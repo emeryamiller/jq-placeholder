@@ -62,7 +62,11 @@
           current_length = read_value.call($field).length
           if (e && e.type === 'keypress') { current_length += 1; }
           if (current_length > opts.vanishing_length) {
-            $label.fadeOut();
+            if (opts.slide) {
+              $label.fadeOut();
+            } else {
+              $label.hide();
+            }
           } else {
             $label.show();
           }
