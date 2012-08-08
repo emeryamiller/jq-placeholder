@@ -5,13 +5,13 @@
       return parseInt(pixels.replace('px', ''));
     };
     var field_padding = function($fld) {
-      result = {}
+      var result = {}
       $.each(['top', 'left', 'right', 'bottom'], function(index, area) {
         result[area] = 0;
         $.each(['margin', 'border', 'padding'], function(index, kind) {
           var selector = kind+'-'+area;
           if (kind === 'border') { selector += '-width'; }
-          result[area] += pixels_to_int($fld.css(kind+'-'+area));
+          result[area] += pixels_to_int($fld.css(selector));
         });
       });
       return result;
