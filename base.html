@@ -48,7 +48,7 @@
 	</p>
 	<script type="text/javascript" language="javascript" charset="utf-8">
 	//<![CDATA[
-		$('input').placeholder();
+    $('input').placeholder({label_click: function() {alert('hi');}});
     $('textarea').placeholder();
     $('#editable').placeholder();
     $('#editable-label').placeholder();

@@ -78,6 +78,9 @@
 			}).mousedown(function(e) {
         e.preventDefault();
         $field.focus();
+        if (opts.label_click) {
+          opts.label_click.call(e);
+        }
       });
 
 			$field.addClass('placeheld').focus(function() {
@@ -110,7 +113,8 @@
 		padding_right: 0,
 		padding_bottom: 0,
     vanishing_length: 5,
-    slide: true
+    slide: true,
+    label_click: null
 	}
 
 })(jQuery);
