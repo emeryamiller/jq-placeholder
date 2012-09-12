@@ -30,7 +30,7 @@ $.fn.placeholder = (options) ->
         $field.attr 'name', 'placeheld'
         name_or_id = 'placeheld'
 
-      $label = $("<label class='placeholder' for='#{name_or_id}'>" + placeholder_text + '</label>')
+      $label = $("<label class='#{opts.holder_class}' for='#{name_or_id}'>" + placeholder_text + '</label>')
     else
       $label = $field.prev("label")
       placeholder_text = $label.text()
@@ -73,7 +73,7 @@ $.fn.placeholder = (options) ->
       opts.label_click.apply(this, e) if opts.label_click
       $field.focus()
 
-    $field.addClass("placeholding").focus ->
+    $field.addClass(opts.holdee_class).focus ->
       if opts.slide
         $label.stop().animate
           left: label_rightmost_left
@@ -98,8 +98,7 @@ $.fn.placeholder.defaults =
   padding_bottom: 0
   vanishing_length: 5
   slide: true
-  wrapper_class: 'placeheld'
   holder_class: 'placeholder'
-  holdee_class: 'placeholding'
+  holdee_class: 'placeheld'
   label_click: null
 

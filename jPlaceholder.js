@@ -42,7 +42,7 @@
           $field.attr('name', 'placeheld');
           name_or_id = 'placeheld';
         }
-        $label = $(("<label class='placeholder' for='" + name_or_id + "'>") + placeholder_text + '</label>');
+        $label = $(("<label class='" + opts.holder_class + "' for='" + name_or_id + "'>") + placeholder_text + '</label>');
       } else {
         $label = $field.prev("label");
         placeholder_text = $label.text();
@@ -101,7 +101,7 @@
         }
         return $field.focus();
       });
-      $field.addClass("placeholding").focus(function() {
+      $field.addClass(opts.holdee_class).focus(function() {
         if (opts.slide) {
           return $label.stop().animate({
             left: label_rightmost_left
@@ -131,9 +131,8 @@
     padding_bottom: 0,
     vanishing_length: 5,
     slide: true,
-    wrapper_class: 'placeheld',
     holder_class: 'placeholder',
-    holdee_class: 'placeholding',
+    holdee_class: 'placeheld',
     label_click: null
   };
 
