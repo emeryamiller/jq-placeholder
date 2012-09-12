@@ -96,6 +96,7 @@
         left: label_left
       }).mousedown(function(e) {
         e.preventDefault();
+        e.target = $field[0];
         if (opts.label_click) {
           opts.label_click.apply(this, e);
         }

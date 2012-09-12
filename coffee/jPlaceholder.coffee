@@ -70,6 +70,7 @@ $.fn.placeholder = (options) ->
       left: label_left
     .mousedown (e) ->
       e.preventDefault()
+      e.target = $field[0]
       opts.label_click.apply(this, e) if opts.label_click
       $field.focus()
 
