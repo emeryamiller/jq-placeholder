@@ -98,7 +98,7 @@
         e.preventDefault();
         e.target = $field[0];
         if (opts.label_click) {
-          opts.label_click.apply(this, e);
+          opts.label_click.apply(this, [e]);
         }
         return $field.focus();
       });
