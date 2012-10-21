@@ -2,8 +2,9 @@
 	<head>
 	  <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 	  <title>Placeholder Sample</title>
-	   <script src="lib/jquery-1.6.x.js" type="text/javascript" charset="utf-8"></script>
-	   <script src="jPlaceholder.js" type="text/javascript" charset="utf-8"></script>
+	   <script src="lib/jquery-1.8.2.js" type="text/javascript" charset="utf-8"></script>
+	   <script src="lib/jquery-ui-1.9.0.custom.js" type="text/javascript" charset="utf-8"></script>
+	   <script src="coffee/jPlaceholder.js" type="text/javascript" charset="utf-8"></script>
 	</head>
   <div>
   <div id='editable-slide' data-placeholder='placeholder-es' contenteditable=true style="border: 1px solid black; width: 20em;"></div>
@@ -24,6 +25,14 @@
 	<p>
     <label for="inputf1a">Placeholder-1a and other</label>
     <input type="text" name="inputf1a"  value="has some content" style="padding: 20px; width: 20em;" id="inputf1a" />
+	</p>
+	<p>
+    <label for="inputf1b">1b - short value</label>
+    <input type="text" name="inputf1b"  value="has" style="padding: 20px; width: 20em;" id="inputf1b" />
+	</p>
+	<p>
+    <label for="inputf1c">1c - autocomplete</label>
+    <input type="email" name="inputf1c" autocomplete="on" style="padding: 20px; width: 20em;" id="inputf1c" />
 	</p>
   <div>
   <div id='editable' data-placeholder='placeholder-ce2' contenteditable=true style="border: 1px solid black; width: 20em;"></div>
@@ -48,11 +57,11 @@
 	</p>
 	<script type="text/javascript" language="javascript" charset="utf-8">
 	//<![CDATA[
-    $('input').placeholder({label_click: function() { console.log('what you doing?'); }});
-    $('textarea').placeholder();
-    $('#editable').placeholder();
-    $('#editable-label').placeholder();
-    $('#editable-slide').placeholder({slide: false});
+    $('input').jqplaceholder({label_click: function() { console.log('what you doing?'); }});
+    $('textarea').jqplaceholder();
+    $('#editable').jqplaceholder();
+    $('#editable-label').jqplaceholder();
+    $('#editable-slide').jqplaceholder({slide: false});
 	//]]>
 	</script>
 </html>
