@@ -51,6 +51,9 @@ The speed with which the placeholder slides can be customized with the
 The base.html file contains a few test cases that can be used as
 examples.
 
+Checkout the login page of [OpusWorkspace](https://app.opusworkspace.com) for an example of the sliding
+effect.
+
 ##Known Issues
 If `.placeholder()` is called prior to the element being rendered in the
 DOM (which often happens in frameworks like backbone.js), the padding
