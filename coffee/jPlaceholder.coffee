@@ -18,7 +18,7 @@ $.fn.placeholder = (options) ->
     $field = $(this)
 
     if $field.data("placeholder_active")
-      keystorke_handler()
+      keystroke_handler?()
       return
     else
       $field.data "placeholder_active", true

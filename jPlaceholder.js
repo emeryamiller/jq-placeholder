@@ -30,7 +30,9 @@
       opts = $.extend({}, $.fn.placeholder.defaults, options);
       $field = $(this);
       if ($field.data("placeholder_active")) {
-        keystorke_handler();
+        if (typeof keystroke_handler === "function") {
+          keystroke_handler();
+        }
         return;
       } else {
         $field.data("placeholder_active", true);
