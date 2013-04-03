@@ -191,7 +191,7 @@
         return this._animate(current_length);
       },
       _animate: function(current_length) {
-        if (current_length >= this.options.vanishing_length) {
+        if (current_length > this.options.vanishing_length) {
           if (this.options.slide) {
             return this.$label.fadeOut();
           } else {

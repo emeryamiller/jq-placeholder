@@ -156,7 +156,7 @@
       @_animate(current_length)
 
     _animate: (current_length)->
-      if current_length >= @options.vanishing_length
+      if current_length > @options.vanishing_length
         if @options.slide
           @$label.fadeOut()
         else
