@@ -37,7 +37,7 @@
         this._attach_label();
         if (this.options.auto_resize) {
           return $(window).bind('resize.jqplaceholder', function() {
-            return _this._refresh();
+            return _this.refresh();
           });
         }
       },

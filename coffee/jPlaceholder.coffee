@@ -31,7 +31,7 @@
       @_attach_label()
       if @options.auto_resize
         $(window).bind 'resize.jqplaceholder', =>
-          @_refresh()
+          @refresh()
 
     _create_label: (placeholder_text)->
       name_or_id = @$field.attr('id') || @$field.attr('name')
